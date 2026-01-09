@@ -1,4 +1,4 @@
-# 🎮 Survival1XP
+# <img src="https://img.icons8.com/color/48/minecraft-grass-cube.png" width="32" alt="MC"/> Survival1XP
 
 <div align="center">
 
