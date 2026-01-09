@@ -8,13 +8,13 @@
 [![Java](https://img.shields.io/badge/Java-21+-orange?style=for-the-badge&logo=openjdk)](https://openjdk.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-[🇷🇺 Русский](#-русский) | [🇬🇧 English](#-english)
+[<img src="https://flagcdn.com/24x18/ru.png" alt="RU"/> Русский](#-русский) | [<img src="https://flagcdn.com/24x18/gb.png" alt="EN"/> English](#-english)
 
 </div>
 
 ---
 
-## 🇷🇺 Русский
+## <img src="https://flagcdn.com/24x18/ru.png" alt="RU"/> Русский
 
 <div align="center">
 <img src="Statsru.png" alt="Статистика" width="300"/>
@@ -65,7 +65,7 @@ mvn clean package
 
 ---
 
-## 🇬🇧 English
+## <img src="https://flagcdn.com/24x18/gb.png" alt="EN"/> English
 
 <div align="center">
 <img src="Statseng.png" alt="Statistics" width="300"/>
