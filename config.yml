@@ -1,0 +1,29 @@
+# HardcoreAR Configuration
+
+# Интервал обновления скорборда (в тиках, 20 = 1 секунда)
+update-interval: 20
+
+# Включить HUD по умолчанию для новых игроков
+hud-enabled-default: true
+
+# Множители прогресса
+progress:
+  # Прогресс за минуту игры
+  per-minute: 0.1
+  # Прогресс за убийство моба
+  per-mob-kill: 0.5
+  # Прогресс за достижение
+  per-advancement: 5.0
+
+# Общее количество достижений в игре
+total-advancements: 110
+
+# Сообщения
+messages:
+  hud-enabled: '&aHUD статистики включен!'
+  hud-disabled: '&cHUD статистики выключен!'
+  stats-reset: '&eСтатистика игрока &f{player} &eсброшена!'
+  config-reloaded: '&aКонфиг перезагружен!'
+  no-permission: '&cУ вас нет прав на эту команду!'
+  player-not-found: '&cИгрок не найден!'
+cheats-enabled: true

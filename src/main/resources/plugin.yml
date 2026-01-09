@@ -1,0 +1,26 @@
+name: Survival1XP
+version: 1.0.0
+main: me.hardcore.ar.HardcoreAR
+api-version: '1.21'
+author: BambooFury
+description: Survival 1HP Challenge Plugin
+
+commands:
+  stats:
+    description: Переключить HUD статистики
+    usage: /stats [reload]
+  reset:
+    description: Полный сброс сервера (пересоздание мира)
+    usage: /reset
+  rs:
+    description: Сброс своей статистики (таймер, ачивки, попытки)
+    usage: /rs
+  1xp:
+    description: Показать список команд плагина
+    usage: /1xp
+  dead:
+    description: Телепорт на место смерти (только в спектаторе)
+    usage: /dead
+  quest:
+    description: Показать описание всех заданий
+    usage: /quest
