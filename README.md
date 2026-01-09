@@ -17,9 +17,9 @@
 ## <img src="https://flagcdn.com/24x18/ru.png" alt="RU"/> Русский
 
 <div align="center">
-<img src="Statsru.png" alt="Статистика" width="500"/>
-<br/><br/>
-<img src="Survival1xpru.png" alt="Survival1XP" width="500"/>
+<img src="Statsru.png" alt="Статистика" width="250"/>
+&nbsp;&nbsp;
+<img src="Survival1xpru.png" alt="Survival1XP" width="400"/>
 </div>
 
 ### ⚡ Особенности
@@ -69,9 +69,9 @@ mvn clean package
 ## <img src="https://flagcdn.com/24x18/gb.png" alt="EN"/> English
 
 <div align="center">
-<img src="Statseng.png" alt="Statistics" width="500"/>
-<br/><br/>
-<img src="Survival1xpeng.png" alt="Survival1XP" width="500"/>
+<img src="Statseng.png" alt="Statistics" width="250"/>
+&nbsp;&nbsp;
+<img src="Survival1xpeng.png" alt="Survival1XP" width="400"/>
 </div>
 
 ### ⚡ Features
