@@ -17,8 +17,8 @@
 ## 🇷🇺 Русский
 
 <div align="center">
-<img src="statsru.png" alt="Статистика" width="300"/>
-<img src="survival1xpru.png" alt="Survival1XP" width="300"/>
+<img src="Statsru.png" alt="Статистика" width="300"/>
+<img src="Survival1xpru.png" alt="Survival1XP" width="300"/>
 </div>
 
 ### ⚡ Особенности
@@ -68,8 +68,8 @@ mvn clean package
 ## 🇬🇧 English
 
 <div align="center">
-<img src="statseng.png" alt="Statistics" width="300"/>
-<img src="survivale1xpeng.png" alt="Survival1XP" width="300"/>
+<img src="Statseng.png" alt="Statistics" width="300"/>
+<img src="Survival1xpeng.png" alt="Survival1XP" width="300"/>
 </div>
 
 ### ⚡ Features
