@@ -118,9 +118,7 @@ mvn clean package
 
 <div align="center">
 
-### 📞 Контакт | Contact
-
-**Telegram:** [@moorya4ok](https://t.me/moorya4ok)
+[![Telegram](https://img.shields.io/badge/Telegram-@moorya4ok-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/moorya4ok)
 
 ---
 
