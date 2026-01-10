@@ -43,14 +43,59 @@ public class StatsListener implements Listener {
         StatsService.PlayerStats stats = statsService.getStats(player);
         stats.resetSessionTime();
         
+        // Проверяем маркер сброса - очищаем игрока и сбрасываем задания
+        java.io.File resetMarker = new java.io.File(plugin.getDataFolder(), "reset_players");
+        boolean wasReset = resetMarker.exists();
+        
+        if (wasReset) {
+            // Очищаем инвентарь
+            player.getInventory().clear();
+            player.getEnderChest().clear();
+            player.setExp(0);
+            player.setLevel(0);
+            
+            // Убираем эффекты
+            for (org.bukkit.potion.PotionEffect effect : player.getActivePotionEffects()) {
+                player.removePotionEffect(effect.getType());
+            }
+            
+            // Режим выживания
+            player.setGameMode(org.bukkit.GameMode.SURVIVAL);
+            
+            // Сбрасываем ВСЕ задания плагина
+            stats.setAttempts(0);
+            stats.setPlayTimeSeconds(0);
+            stats.resetSessionTime();
+            stats.setProgress(0);
+            stats.setLastProgress(0);
+            stats.setFoundVillage(false);
+            stats.setVisitedNether(false);
+            stats.setGotBlazeRods(false);
+            stats.setGotPearls(false);
+            stats.setNetherComplete(false);
+            stats.setGotArrows(false);
+            stats.setFoundStronghold(false);
+            stats.setVisitedEnd(false);
+            stats.setKilledDragon(false);
+            stats.setFirstJoin(true); // Чтобы показать приветствие
+            
+            statsService.saveStats(player.getUniqueId());
+            
+            // Удаляем маркер после первого игрока
+            resetMarker.delete();
+        }
+        
         plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
             if (player.isOnline()) {
                 setHalfHeart(player);
+                
+                // Обновляем скорборд
+                hudScoreboard.removeBoard(player);
                 if (stats.isHudEnabled()) {
                     hudScoreboard.createBoard(player);
                 }
                 
-                // Показываем подсказку при первом входе
+                // Показываем подсказку при первом входе или после reset
                 if (stats.isFirstJoin()) {
                     stats.setFirstJoin(false);
                     statsService.saveStats(player.getUniqueId());
@@ -247,6 +292,40 @@ public class StatsListener implements Listener {
             player.sendTitle("§6§l★ " + (ru ? "ПОБЕДА" : "VICTORY") + " §6§l★", 
                            "§a" + (ru ? "Все задания выполнены!" : "All tasks completed!"), 
                            10, 70, 20);
+            
+            // Падающие алмазы с игрока
+            spawnDiamondRain(player);
+        }
+    }
+    
+    private void spawnDiamondRain(Player player) {
+        Location loc = player.getLocation().add(0, 2, 0);
+        World world = player.getWorld();
+        
+        // Спавним алмазы несколько раз с задержкой
+        for (int wave = 0; wave < 5; wave++) {
+            final int w = wave;
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                for (int i = 0; i < 8; i++) {
+                    double offsetX = (Math.random() - 0.5) * 2;
+                    double offsetZ = (Math.random() - 0.5) * 2;
+                    Location spawnLoc = loc.clone().add(offsetX, Math.random(), offsetZ);
+                    
+                    org.bukkit.entity.Item item = world.dropItem(spawnLoc, new ItemStack(Material.DIAMOND));
+                    item.setPickupDelay(Integer.MAX_VALUE); // Нельзя подобрать
+                    item.setVelocity(new org.bukkit.util.Vector(
+                        (Math.random() - 0.5) * 0.3,
+                        0.2,
+                        (Math.random() - 0.5) * 0.3
+                    ));
+                    
+                    // Удаляем через 3 секунды
+                    plugin.getServer().getScheduler().runTaskLater(plugin, item::remove, 60L);
+                }
+                
+                // Звук алмазов
+                player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 0.5f, 1.2f);
+            }, wave * 10L);
         }
     }
     

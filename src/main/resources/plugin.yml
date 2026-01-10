@@ -1,5 +1,5 @@
 name: Survival1XP
-version: 1.0.0
+version: 1.1.0
 main: me.hardcore.ar.HardcoreAR
 api-version: '1.21'
 author: BambooFury
@@ -24,3 +24,5 @@ commands:
   quest:
     description: Показать описание всех заданий
     usage: /quest
+  winez:
+    usage: /winez

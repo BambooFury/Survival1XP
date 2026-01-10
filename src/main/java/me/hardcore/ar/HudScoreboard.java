@@ -17,6 +17,30 @@ public class HudScoreboard {
     private final Map<UUID, PlayerBoard> playerBoards = new HashMap<>();
     private BukkitTask updateTask;
     private int animFrame = 0;
+    
+    private static final ChatColor[] GRADIENT_COLORS = {
+        ChatColor.DARK_PURPLE,
+        ChatColor.DARK_PURPLE,
+        ChatColor.DARK_PURPLE,
+        ChatColor.LIGHT_PURPLE,
+        ChatColor.LIGHT_PURPLE,
+        ChatColor.LIGHT_PURPLE,
+        ChatColor.LIGHT_PURPLE,
+        ChatColor.LIGHT_PURPLE,
+        ChatColor.DARK_PURPLE,
+        ChatColor.DARK_PURPLE,
+        ChatColor.DARK_PURPLE,
+        ChatColor.DARK_PURPLE
+    };
+    
+    private String animateGradient(String text, int offset) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < text.length(); i++) {
+            int colorIndex = (i + offset) % GRADIENT_COLORS.length;
+            sb.append(GRADIENT_COLORS[colorIndex]).append(text.charAt(i));
+        }
+        return sb.toString();
+    }
 
     private static final String CHECK = "§a■";
     private static final String CROSS = "§8■";
@@ -27,11 +51,10 @@ public class HudScoreboard {
     }
 
     public void start() {
-        int interval = plugin.getConfig().getInt("update-interval", 20);
         updateTask = Bukkit.getScheduler().runTaskTimer(plugin, () -> {
             animFrame++;
             updateAll();
-        }, 20L, interval);
+        }, 20L, 20L);
     }
 
     public void stop() {
@@ -106,9 +129,9 @@ public class HudScoreboard {
         pb.setLine(7, "  " + getTaskLine(stats.isVisitedNether(), ru ? "Незер" : "Nether"));
         pb.setLine(6, "  " + getTaskLine(stats.hasGotBlazeRods(), ru ? "Стержни" : "Rods"));
         pb.setLine(5, "  " + getTaskLine(stats.hasGotPearls(), ru ? "Жемчуг" : "Pearls"));
-        pb.setLine(4, "  " + getTaskLine(stats.isNetherComplete(), ru ? "Око эндера" : "Ender Eye"));
-        pb.setLine(3, "  " + getTaskLine(stats.isVisitedEnd(), ru ? "Посетил Энд" : "Visited End"));
-        pb.setLine(2, "  " + getTaskLine(stats.hasKilledDragon(), ru ? "Убил дракона" : "Killed Dragon"));
+        pb.setLine(4, "  " + getTaskLine(stats.isNetherComplete(), ru ? "Око эндера" : "Eye"));
+        pb.setLine(3, "  " + getTaskLine(stats.isVisitedEnd(), ru ? "Энд" : "End"));
+        pb.setLine(2, "  " + getTaskLine(stats.hasKilledDragon(), ru ? "Дракон" : "Dragon"));
         pb.setLine(1, "§5by BambooFury");
         pb.setLine(0, "");
     }
